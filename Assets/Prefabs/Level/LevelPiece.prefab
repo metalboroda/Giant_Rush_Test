@@ -2004,7 +2004,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7331562603297804727}
-  - component: {fileID: 7094543404256535684}
   m_Layer: 0
   m_Name: LevelPiece
   m_TagString: Untagged
@@ -2031,25 +2030,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7094543404256535684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7331562603297804720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8e94945b307154aac4ed712aa24d20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needSpawnScalers: 1
-  scalerPrefabs:
-  - {fileID: 4989108144512651778, guid: 61471338a3949e7409d3ed8eea4144ca, type: 3}
-  pointsParent: {fileID: 8925396345004081121}
-  scalerPoints: []
-  minSpawn: 10
-  maxSpawn: 25
 --- !u!1 &7876461035394713829
 GameObject:
   m_ObjectHideFlags: 0

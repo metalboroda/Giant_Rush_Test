@@ -1,13 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DynamicJoystick : Joystick
 {
+    public static DynamicJoystick instance;
+
     public float MoveThreshold { get { return moveThreshold; } set { moveThreshold = Mathf.Abs(value); } }
 
     [SerializeField] private float moveThreshold = 1;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     protected override void Start()
     {

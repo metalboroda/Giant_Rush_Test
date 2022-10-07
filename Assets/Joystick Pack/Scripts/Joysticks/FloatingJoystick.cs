@@ -1,10 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine.EventSystems;
 
 public class FloatingJoystick : Joystick
 {
+    public static FloatingJoystick instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     protected override void Start()
     {
         base.Start();

@@ -440,8 +440,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5305572583220447562}
   - component: {fileID: 2731466101863644446}
-  - component: {fileID: 4036934582930938158}
-  - component: {fileID: 4313539032822277786}
   m_Layer: 0
   m_Name: LevelPiece_Portal
   m_TagString: Untagged
@@ -482,42 +480,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 8, y: 1, z: 3}
   m_Center: {x: 0, y: 0.5, z: -11.5}
---- !u!114 &4036934582930938158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5305572583220447565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d8e94945b307154aac4ed712aa24d20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needSpawnScalers: 1
-  scalerPrefabs:
-  - {fileID: 4989108144512651778, guid: 61471338a3949e7409d3ed8eea4144ca, type: 3}
-  pointsParent: {fileID: 4319487549405697043}
-  scalerPoints: []
-  minSpawn: 10
-  maxSpawn: 25
---- !u!114 &4313539032822277786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5305572583220447565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b116bec24ecd5ed44a4286954bc8d108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: 4352999b53ccdbc41ae8e0fe26629835, type: 2}
-  - {fileID: 2100000, guid: 0c5f0653675dbda418743c69f83388a8, type: 2}
-  meshRenderer: {fileID: 7851609428960907613}
-  colorState: 0
 --- !u!1 &5305572583860888708
 GameObject:
   m_ObjectHideFlags: 0

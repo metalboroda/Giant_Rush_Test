@@ -714,13 +714,7 @@ GameObject:
   - component: {fileID: 205599865973334574}
   - component: {fileID: 3463019969896999986}
   - component: {fileID: 1534270637025954449}
-  - component: {fileID: 3976666687871468200}
-  - component: {fileID: 7521967301789840505}
   - component: {fileID: 5122969177454880702}
-  - component: {fileID: 406001509}
-  - component: {fileID: 406001510}
-  - component: {fileID: 1997109241}
-  - component: {fileID: 1303573048}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -778,7 +772,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 12
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!136 &1534270637025954449
 CapsuleCollider:
@@ -794,50 +788,6 @@ CapsuleCollider:
   m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &3976666687871468200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4120250566988111124}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eda371e5375f454490a86f21559ee38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Use:
-    Filter: 0
-    IgnoreStartedOverGui: 0
-    RequiredFingerCount: 0
-    RequiredMouseButtons: 0
-    RequiredSelectable: {fileID: 0}
-  _camera: {fileID: 0}
-  sensitivity: 8
-  damping: 0.5
-  inertia: 0
-  remainingTranslation: {x: 0, y: 0, z: 0}
---- !u!114 &7521967301789840505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4120250566988111124}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bba20bf23126c85468b88920f51992b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  x: 1
-  xMin: -3.5
-  xMax: 3.5
-  y: 1
-  yMin: 0
-  yMax: 0
-  z: 1
-  zMin: 0
-  zMax: 0
 --- !u!114 &5122969177454880702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,65 +800,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30ce78bda4bd1874ba5bf9338111e123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchMovementSpeed: 0.125
-  sideMovementSpeed: 8
+  movementSpeed: 5
+  sideMovementSpeed: 0.03
   sideConstraints: 3.5
-  controlType: 0
---- !u!114 &406001509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4120250566988111124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86638141c97dd6541a771aa43921b272, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 0
-  canMove: 1
---- !u!114 &406001510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4120250566988111124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9325abdb1eb8c746962b6dc21edb4db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1997109241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4120250566988111124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0000023af063b5e4e9b524f5bbdf7ae9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skinnedMeshRenderer: {fileID: 8691398325617158549}
-  characterColorState: 0
---- !u!114 &1303573048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4120250566988111124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 740bc533bc6541f418d0efa91dc02303, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scaleIncrease: 0.1
-  _playerLevel: 0
-  _health: 0
 --- !u!1 &4265243598775460224
 GameObject:
   m_ObjectHideFlags: 0
