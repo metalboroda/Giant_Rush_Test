@@ -1,71 +1,76 @@
 using Assets.Scripts.Managers;
-using UniRx;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Assets.Scripts.Character
 {
-    public class PlayerController : MonoBehaviour
+    [RequireComponent(typeof(PlayerMovement))]
+    public class PlayerController : ColorChangeBase
     {
-        [SerializeField]
-        private float movementSpeed = 5;
-        [SerializeField]
-        private float sideMovementSpeed = 8;
-        [SerializeField]
-        private float sideConstraints;
+        public static PlayerController instance;
 
-        // UniRx
-        private CompositeDisposable _disposable = new CompositeDisposable();
+        [Header("")]
+        public int powerCount;
+        public int powerLimit = 10;
 
-        private void OnEnable()
+        [Header("")]
+        [SerializeField]
+        private float scaleAmount = 0.15f;
+        [SerializeField]
+        private float scaleTime = 0.25f;
+
+        // Private vars
+        private PlayerMovement _playerMovement;
+
+        private void Awake()
         {
-            GameManager.OnGameStateChanged += RxMovementHandle;
+            instance = this;
         }
 
-        private void OnDisable()
+        private void Start()
         {
-            GameManager.OnGameStateChanged -= RxMovementHandle;
-
-            _disposable.Clear();
+            _playerMovement = PlayerMovement.instance;
         }
 
-        private void RxMovementHandle(GameState state)
+        public void Upscale()
         {
-            Observable.EveryUpdate().Subscribe(_ =>
+            if (powerCount < powerLimit)
             {
-                if (state == GameState.Started)
-                {
-                    MoveForward();
-                    JoystickSideMovementHandle();
-                    ConstraintHandle();
-                }
-                else
-                {
-                    _disposable.Clear();
-                }
+                powerCount++;
+
+                transform.DOScale(new Vector3(transform.localScale.x + scaleAmount,
+                transform.localScale.y + scaleAmount,
+                transform.localScale.z + scaleAmount), scaleTime);
             }
-            ).AddTo(_disposable);
+
+            _playerMovement.movementSpeed += _playerMovement.speedUp;
         }
 
-        private void MoveForward()
+        public void Descale()
         {
-            if (GameManager.instance.State == GameState.Started)
+            powerCount--;
+
+            if (powerCount > -1)
             {
-                transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+                transform.DOScale(new Vector3(transform.localScale.x - scaleAmount,
+                transform.localScale.y - scaleAmount,
+                transform.localScale.z - scaleAmount), scaleTime);
+            }
+
+            _playerMovement.movementSpeed -= _playerMovement.speedUp;
+
+            if (powerCount < 0)
+            {
+                Death();
             }
         }
 
-        private void JoystickSideMovementHandle()
+        private void Death()
         {
-            float xMovement = DynamicJoystick.instance.Horizontal;
+            _playerMovement.movementSpeed = 0;
+            _playerMovement.UpdatePlayerState(PlayerState.Dead);
 
-            transform.position += new Vector3(xMovement, 0, 0) * sideMovementSpeed;
-        }
-
-        private void ConstraintHandle()
-        {
-            var playerPos = new Vector3(Mathf.Clamp(transform.position.x, -sideConstraints, sideConstraints), transform.position.y, transform.position.z);
-
-            transform.position = playerPos;
+            GameManager.instance.UpdateGameState(GameState.Lose);
         }
     }
 }

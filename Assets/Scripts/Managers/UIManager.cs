@@ -9,6 +9,10 @@ namespace Assets.Scripts.Managers
         private GameObject startScreen;
         [SerializeField]
         private GameObject gameScreen;
+        [SerializeField]
+        private GameObject winScreen;
+        [SerializeField]
+        private GameObject loseScreen;
 
         private void OnEnable()
         {
@@ -23,6 +27,9 @@ namespace Assets.Scripts.Managers
         private void GameManagerOnGameStateChange(GameState state)
         {
             startScreen.SetActive(state == GameState.Start);
+            gameScreen.SetActive(state == GameState.Started);
+            winScreen.SetActive(state == GameState.Win);
+            loseScreen.SetActive(state == GameState.Lose);
         }
     }
 }

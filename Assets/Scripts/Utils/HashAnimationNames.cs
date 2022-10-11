@@ -1,6 +1,11 @@
 using UnityEngine;
 
-public class HashAnimationNames
+namespace Assets.Scripts.Utils
 {
-    public int IdleHash = Animator.StringToHash("Idle");
+    public class HashAnimationNames
+    {
+        public int IdleHash = Animator.StringToHash("Idle");
+        public int RunHash = Animator.StringToHash("Run");
+        public int DeathHash = Animator.StringToHash("Death");
+    }
 }

@@ -10,6 +10,7 @@ namespace Assets.Scripts.Managers
         // Events
         public static event Action<GameState> OnGameStateChanged;
 
+        [Header("")]
         public GameState State;
 
         private void Awake()
@@ -19,6 +20,8 @@ namespace Assets.Scripts.Managers
 
         private void Start()
         {
+            Application.targetFrameRate = 60;
+
             UpdateGameState(GameState.Start);
         }
 
