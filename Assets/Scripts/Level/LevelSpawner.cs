@@ -52,13 +52,13 @@ namespace Assets.Scripts.Level
                 {
                     _portalColorIndex = 1;
 
-                    SpawnPortal(0);
+                    SpawnPortal(1);
                 }
                 else if (_portalColorIndex == 1)
                 {
                     _portalColorIndex = 0;
 
-                    SpawnPortal(1);
+                    SpawnPortal(0);
                 }
             }
         }
