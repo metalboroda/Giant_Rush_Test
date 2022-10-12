@@ -17,6 +17,10 @@ namespace Assets.Scripts.Character
 
         [Header("")]
         public ControlType controlType;
+        [SerializeField]
+        private GameObject joystickUi;
+        [SerializeField]
+        private GameObject touchUi;
 
         [Header("")]
         public float movementSpeed = 5;

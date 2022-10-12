@@ -1092,7 +1092,7 @@ MonoBehaviour:
   rend: {fileID: 8691398325617158549}
   powerCount: 0
   powerLimit: 10
-  scaleAmount: 0.15
+  scaleAmount: 0.1
   scaleTime: 0.25
 --- !u!1 &4265243598775460224
 GameObject:
