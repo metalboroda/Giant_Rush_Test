@@ -16,6 +16,9 @@ namespace Assets.Scripts.Character
         public PlayerState state;
 
         [Header("")]
+        public ControlType controlType;
+
+        [Header("")]
         public float movementSpeed = 5;
         public float speedUp = 0.25f;
         [SerializeField]
@@ -96,9 +99,21 @@ namespace Assets.Scripts.Character
         {
             if (state == PlayerState.Moving)
             {
-                float xMovement = UltimateTouchpad.GetHorizontalAxis("JoyStick");
+                float xMovement = 0;
 
-                transform.position += new Vector3(xMovement, 0, 0) * sideMovementSpeed * Time.deltaTime;
+                if (controlType == ControlType.Joystick)
+                {
+                    xMovement = UltimateJoystick.GetHorizontalAxis("JoyStick");
+
+                    transform.position += new Vector3(xMovement * 10, 0, 0) * sideMovementSpeed * Time.deltaTime;
+                }
+                else
+                {
+                    xMovement = UltimateTouchpad.GetHorizontalAxis("TouchPad");
+
+                    transform.position += new Vector3(xMovement, 0, 0) * sideMovementSpeed * Time.deltaTime;
+                }
+
             }
         }
 
@@ -115,5 +130,11 @@ namespace Assets.Scripts.Character
         Idle,
         Moving,
         Dead
+    }
+
+    public enum ControlType
+    {
+        Touch,
+        Joystick
     }
 }

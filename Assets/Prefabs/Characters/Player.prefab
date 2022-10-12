@@ -1041,6 +1041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  controlType: 1
   movementSpeed: 5
   speedUp: 0.25
   sideMovementSpeed: 0.75
