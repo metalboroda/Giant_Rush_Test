@@ -40,6 +40,9 @@ namespace Assets.Scripts.Character
         // UniRx
         private CompositeDisposable _disposable = new CompositeDisposable();
 
+        // Private vars
+        private bool _isRecovery = false;
+
         private void Awake()
         {
             instance = this;
@@ -80,7 +83,7 @@ namespace Assets.Scripts.Character
                     break;
                 case PlayerState.Dead:
                     break;
-                case PlayerState.FighIdle:
+                case PlayerState.FightIdle:
                     break;
                 case PlayerState.Punching:
                     break;
@@ -111,27 +114,39 @@ namespace Assets.Scripts.Character
 
         public void Fight()
         {
-            UpdatePlayerState(PlayerState.FighIdle);
+            UpdatePlayerState(PlayerState.FightIdle);
         }
 
-        public void Punch(bool enableColliders)
+        public void Punch()
         {
-            UpdatePlayerState(PlayerState.Punching);
+            if (_isRecovery) return;
 
-            if (enableColliders)
+            _isRecovery = true;
+
+            UpdatePlayerState(PlayerState.Punching);
+        }
+
+        public void EnablePunchColliders()
+        {
+            foreach (var item in punchColliders)
             {
-                foreach (var item in punchColliders)
-                {
-                    item.enabled = true;
-                }
+                item.enabled = true;
             }
-            else
+        }
+
+        public void DisablePunchColliders()
+        {
+            foreach (var item in punchColliders)
             {
-                foreach (var item in punchColliders)
-                {
-                    item.enabled = false;
-                }
+                item.enabled = false;
             }
+        }
+
+        public void ResetRecovery()
+        {
+            _isRecovery = false;
+
+            UpdatePlayerState(PlayerState.FightIdle);
         }
 
         private void JoystickSideMovementHandle()
@@ -176,7 +191,7 @@ namespace Assets.Scripts.Character
     {
         Idle,
         Moving,
-        FighIdle,
+        FightIdle,
         Punching,
         Dead
     }

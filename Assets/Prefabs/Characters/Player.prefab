@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7138899031119296005}
   - component: {fileID: 8805188044516587136}
+  - component: {fileID: 5455826800013598918}
   m_Layer: 0
   m_Name: mixamorig:LeftHand
   m_TagString: Untagged
@@ -105,12 +106,25 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 526731190190139914}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
-  m_Radius: 0.2
-  m_Height: 0
+  m_Radius: 0.1
+  m_Height: 0.4
   m_Direction: 1
   m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &5455826800013598918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526731190190139914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e8970149b45f54098ccd4670c01eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: 0
 --- !u!1 &794817029550166479
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2349681386479655950}
   - component: {fileID: 7045223040941362646}
+  - component: {fileID: 5913240322660294634}
   m_Layer: 0
   m_Name: mixamorig:RightHand
   m_TagString: Untagged
@@ -674,12 +689,25 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2054120053139984071}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
-  m_Radius: 0.2
-  m_Height: 0
+  m_Radius: 0.1
+  m_Height: 0.4
   m_Direction: 1
   m_Center: {x: 0, y: 0.1, z: 0}
+--- !u!114 &5913240322660294634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054120053139984071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e8970149b45f54098ccd4670c01eb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterType: 0
 --- !u!1 &2213232592570180043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,7 +1155,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 4352999b53ccdbc41ae8e0fe26629835, type: 2}
   - {fileID: 2100000, guid: 0c5f0653675dbda418743c69f83388a8, type: 2}
   rend: {fileID: 8691398325617158549}
-  powerCount: 0
+  powerCount: 1
   powerLimit: 30
   scaleAmount: 0.075
   scaleTime: 0.25

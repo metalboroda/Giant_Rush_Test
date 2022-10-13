@@ -10,7 +10,7 @@ namespace Assets.Scripts.Character
         public static PlayerController instance;
 
         [Header("")]
-        public int powerCount;
+        public int powerCount = 1;
         public int powerLimit = 99;
 
         [Header("")]
@@ -69,7 +69,7 @@ namespace Assets.Scripts.Character
         {
             powerCount -= damageAmount;
 
-            if (powerCount < 0)
+            if (powerCount <= 0)
             {
                 Death();
             }
