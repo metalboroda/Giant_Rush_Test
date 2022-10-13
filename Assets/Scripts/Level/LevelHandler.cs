@@ -39,6 +39,8 @@ namespace Assets.Scripts.Level
         {
             PortalDisableSomePoints();
             SpawnPickablePowerAtRandomPoint();
+            NextLevelColliderSwitch();
+            PortalSwitch();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -50,12 +52,6 @@ namespace Assets.Scripts.Level
                     levelSpawner.SpawnLevel();
                 }
             }
-        }
-
-        private void Update()
-        {
-            PortalSwitch();
-            NextLevelColliderSwitch();
         }
 
         private void NextLevelColliderSwitch()

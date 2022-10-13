@@ -5,13 +5,13 @@ using UnityEngine;
 namespace Assets.Scripts.Character
 {
     [RequireComponent(typeof(PlayerMovement))]
-    public class PlayerController : ColorChangeBase
+    public class PlayerController : ColorChangeBase, IDamageable
     {
         public static PlayerController instance;
 
         [Header("")]
         public int powerCount;
-        public int powerLimit = 10;
+        public int powerLimit = 99;
 
         [Header("")]
         [SerializeField]
@@ -65,12 +65,27 @@ namespace Assets.Scripts.Character
             }
         }
 
+        private void GetHit(int damageAmount)
+        {
+            powerCount -= damageAmount;
+
+            if (powerCount < 0)
+            {
+                Death();
+            }
+        }
+
+        public void Damage(int damageAmount)
+        {
+            GetHit(damageAmount);
+        }
+
         private void Death()
         {
             _playerMovement.movementSpeed = 0;
             _playerMovement.UpdatePlayerState(PlayerState.Dead);
 
-            GameManager.instance.UpdateGameState(GameState.Lose);
+            GameManager.instance.UpdateGameState(GameState.RunnerLose);
         }
     }
 }

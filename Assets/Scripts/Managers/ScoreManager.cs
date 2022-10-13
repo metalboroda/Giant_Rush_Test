@@ -27,12 +27,12 @@ namespace Assets.Scripts.Managers
 
         public void InCreasePowerScore()
         {
-            powerScoreCountText.SetText($"{_playerController.powerCount} / {_playerController.powerLimit}");
+            powerScoreCountText.SetText($"{_playerController.powerCount}");
         }
 
         public void DecreasePowerScore()
         {
-            powerScoreCountText.SetText($"{_playerController.powerCount} / {_playerController.powerLimit}");
+            powerScoreCountText.SetText($"{_playerController.powerCount}");
         }
     }
 }

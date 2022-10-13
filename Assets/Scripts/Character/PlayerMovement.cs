@@ -1,5 +1,7 @@
 using Assets.Scripts.Managers;
+using DG.Tweening;
 using System;
+using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
@@ -16,19 +18,24 @@ namespace Assets.Scripts.Character
         public PlayerState state;
 
         [Header("")]
-        public ControlType controlType;
-        [SerializeField]
-        private GameObject joystickUi;
-        [SerializeField]
-        private GameObject touchUi;
-
-        [Header("")]
         public float movementSpeed = 5;
         public float speedUp = 0.25f;
         [SerializeField]
         private float sideMovementSpeed = 8;
         [SerializeField]
         private float sideConstraints;
+
+        [Header("Rotation")]
+        [SerializeField]
+        private Transform model;
+        [SerializeField]
+        private float rotationLimit;
+        [SerializeField]
+        private float rotationSpeed = 0.25f;
+
+        [Header("Fight")]
+        [SerializeField]
+        private List<Collider> punchColliders = new List<Collider>();
 
         // UniRx
         private CompositeDisposable _disposable = new CompositeDisposable();
@@ -73,6 +80,10 @@ namespace Assets.Scripts.Character
                     break;
                 case PlayerState.Dead:
                     break;
+                case PlayerState.FighIdle:
+                    break;
+                case PlayerState.Punching:
+                    break;
                 default:
                     break;
             }
@@ -82,13 +93,12 @@ namespace Assets.Scripts.Character
 
         private void MoveForward(GameState state)
         {
-            if (state == GameState.Started)
+            if (state == GameState.Runner)
             {
                 UpdatePlayerState(PlayerState.Moving);
 
                 Observable.EveryUpdate().Subscribe(_ =>
                 {
-
                     transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
 
                 }).AddTo(_disposable);
@@ -99,25 +109,58 @@ namespace Assets.Scripts.Character
             }
         }
 
+        public void Fight()
+        {
+            UpdatePlayerState(PlayerState.FighIdle);
+        }
+
+        public void Punch(bool enableColliders)
+        {
+            UpdatePlayerState(PlayerState.Punching);
+
+            if (enableColliders)
+            {
+                foreach (var item in punchColliders)
+                {
+                    item.enabled = true;
+                }
+            }
+            else
+            {
+                foreach (var item in punchColliders)
+                {
+                    item.enabled = false;
+                }
+            }
+        }
+
         private void JoystickSideMovementHandle()
         {
             if (state == PlayerState.Moving)
             {
-                float xMovement = 0;
+                var xAxis = UltimateJoystick.GetHorizontalAxis("JoyStick");
 
-                if (controlType == ControlType.Joystick)
-                {
-                    xMovement = UltimateJoystick.GetHorizontalAxis("JoyStick");
+                transform.position += new Vector3(xAxis * 10, 0, 0) * sideMovementSpeed * Time.deltaTime;
 
-                    transform.position += new Vector3(xMovement * 10, 0, 0) * sideMovementSpeed * Time.deltaTime;
-                }
-                else
-                {
-                    xMovement = UltimateTouchpad.GetHorizontalAxis("TouchPad");
+                RotationHandle();
+            }
+        }
 
-                    transform.position += new Vector3(xMovement, 0, 0) * sideMovementSpeed * Time.deltaTime;
-                }
+        private void RotationHandle()
+        {
+            var xAxis = UltimateJoystick.GetHorizontalAxis("JoyStick");
 
+            if (xAxis > rotationLimit)
+            {
+                model.DORotate(new Vector3(transform.rotation.x, 20, transform.rotation.z), rotationSpeed, default);
+            }
+            else if (xAxis < -rotationLimit)
+            {
+                model.DORotate(new Vector3(transform.rotation.x, -20, transform.rotation.z), rotationSpeed, default);
+            }
+            else if (xAxis < rotationLimit || xAxis > -rotationLimit || xAxis == 0)
+            {
+                model.DORotate(new Vector3(transform.rotation.x, 0, transform.rotation.z), rotationSpeed, default);
             }
         }
 
@@ -133,12 +176,8 @@ namespace Assets.Scripts.Character
     {
         Idle,
         Moving,
+        FighIdle,
+        Punching,
         Dead
-    }
-
-    public enum ControlType
-    {
-        Touch,
-        Joystick
     }
 }

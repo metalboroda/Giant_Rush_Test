@@ -3,18 +3,14 @@ using Assets.Scripts.Character;
 
 namespace Assets.Scripts.Level
 {
+    [ExecuteInEditMode]
     public class PortalColor : ColorChangeBase
     {
         public bool needColorAtStart = true;
 
-        private void Awake()
+        private void Update()
         {
-            GameObject gameObject = new GameObject();
-            gameObject.AddComponent<ColorChangeBase>();
-        }
-
-        private void Start()
-        {
+            // Make change it in editor
             if (needColorAtStart)
             {
                 SetColor(colorState);

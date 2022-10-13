@@ -33,11 +33,15 @@ namespace Assets.Scripts.Managers
             {
                 case GameState.Start:
                     break;
-                case GameState.Started:
+                case GameState.Runner:
                     break;
-                case GameState.Win:
+                case GameState.RunnerLose:
                     break;
-                case GameState.Lose:
+                case GameState.Fighting:
+                    break;
+                case GameState.FightingWin:
+                    break;
+                case GameState.FightingLose:
                     break;
                 default:
                     break;
@@ -48,15 +52,17 @@ namespace Assets.Scripts.Managers
 
         public void StartGame()
         {
-            UpdateGameState(GameState.Started);
+            UpdateGameState(GameState.Runner);
         }
     }
 
     public enum GameState
     {
         Start,
-        Started,
-        Win,
-        Lose
+        Runner,
+        RunnerLose,
+        Fighting,
+        FightingWin,
+        FightingLose
     }
 }

@@ -15,11 +15,11 @@ MonoBehaviour:
   lightingModel: 0
   useFlatLighting: 0
   renderQueueIndex: 0
-  color: {r: 0.3019608, g: 0.8156863, b: 0.88235295, a: 0.2}
+  color: {r: 0, g: 0.7372549, b: 0.83137256, a: 0.2}
   specColor: {r: 0.14150941, g: 0.13667007, b: 0.12215199, a: 1}
   smoothness: 0.94
   enableLightAbsorption: 1
-  depthColor: {r: 0, g: 0.5137255, b: 0.56078434, a: 0.85}
+  depthColor: {r: 1, g: 1, b: 1, a: 1}
   maxDepth: 10
   enableFoam: 1
   foamColor: {r: 1, g: 1, b: 1, a: 1}
@@ -43,7 +43,7 @@ MonoBehaviour:
   waveLength: 50
   waveSteepness: 0.9
   waveDeform: 0.5
-  fresnelStrength: 0.25
+  fresnelStrength: 0
   fresnelBias: 0
   enableReflection: 1
   reflectionTextureResolution: 256
@@ -51,7 +51,7 @@ MonoBehaviour:
   reflectionClipPlaneOffset: 0.1
   reflectionLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   reflectCustomSkybox: 0
   reflectionDistortionStrength: 25
   enableRefraction: 1
