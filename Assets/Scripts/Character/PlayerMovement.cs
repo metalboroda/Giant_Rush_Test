@@ -51,6 +51,8 @@ namespace Assets.Scripts.Character
         private void Start()
         {
             UpdatePlayerState(PlayerState.Idle);
+
+            EnablePunchColliders();
         }
 
         private void Update()
@@ -131,14 +133,6 @@ namespace Assets.Scripts.Character
             foreach (var item in punchColliders)
             {
                 item.enabled = true;
-            }
-        }
-
-        public void DisablePunchColliders()
-        {
-            foreach (var item in punchColliders)
-            {
-                item.enabled = false;
             }
         }
 

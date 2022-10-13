@@ -59,7 +59,7 @@ namespace Assets.Scripts.Character
 
             _playerMovement.movementSpeed -= _playerMovement.speedUp;
 
-            if (powerCount < 0)
+            if (powerCount < 1)
             {
                 Death();
             }

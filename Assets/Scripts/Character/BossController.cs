@@ -25,11 +25,8 @@ namespace Assets.Scripts.Character
         [SerializeField]
         private List<Collider> punchColliders = new List<Collider>();
 
-        // UniRx refs
-        private CompositeDisposable _disposable = new CompositeDisposable();
-
         // Private vars
-        private bool _isRecovery = false;
+        //private bool _isRecovery = false;
 
         private void Awake()
         {
@@ -39,11 +36,8 @@ namespace Assets.Scripts.Character
         private void Start()
         {
             UpdateBossState(BossState.Idle);
-        }
 
-        private void Update()
-        {
-            Fight();
+            EnablePunchColliders();
         }
 
         public void UpdateBossState(BossState newState)
@@ -65,50 +59,11 @@ namespace Assets.Scripts.Character
             OnBossStateChanged?.Invoke(newState);
         }
 
-        private void Fight()
-        {
-            if (state == BossState.Fighting)
-            {
-                Observable.Timer(TimeSpan.FromSeconds(3)).Subscribe(_ =>
-                {
-                    if (_isRecovery) return;
-
-                    _isRecovery = true;
-
-                    _disposable.Clear();
-
-                }).AddTo(_disposable);
-            }
-        }
-
-        public void ResetRecovery()
-        {
-            var randTime = Random.Range(0.5f, 1f);
-
-            Observable.Timer(TimeSpan.FromSeconds(randTime)).Subscribe(_ =>
-            {
-                _isRecovery = false;
-
-                UpdateBossState(BossState.Fighting);
-
-                _disposable.Clear();
-
-            }).AddTo(_disposable);
-        }
-
         public void EnablePunchColliders()
         {
             foreach (var item in punchColliders)
             {
                 item.enabled = true;
-            }
-        }
-
-        public void DisablePunchColliders()
-        {
-            foreach (var item in punchColliders)
-            {
-                item.enabled = false;
             }
         }
 
