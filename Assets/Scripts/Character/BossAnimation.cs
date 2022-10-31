@@ -61,7 +61,7 @@ public class BossAnimation : MonoBehaviour
 
     private void FightIdleAnimation(BossState state)
     {
-        if (state == BossState.Fighting)
+        if (state == BossState.FightIdle)
         {
             animator.CrossFade(animationNames.FightIdleHash, transitionDuration);
         }
@@ -69,7 +69,7 @@ public class BossAnimation : MonoBehaviour
 
     private void PunchAnimation(BossState state)
     {
-        if (state == BossState.Fighting)
+        if (state == BossState.FightIdle)
         {
             var randAnim = Random.Range(0, 3 + 1);
 

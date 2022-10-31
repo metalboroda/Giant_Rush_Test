@@ -1,7 +1,6 @@
 using Assets.Scripts.Managers;
 using DG.Tweening;
 using System;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
@@ -33,26 +32,17 @@ namespace Assets.Scripts.Character
         [SerializeField]
         private float rotationSpeed = 0.25f;
 
-        [Header("Fight")]
-        [SerializeField]
-        private List<Collider> punchColliders = new List<Collider>();
-
         // UniRx
         private CompositeDisposable _disposable = new CompositeDisposable();
 
-        // Private vars
-        private bool _isRecovery = false;
+        // Private refs
+        private FightController fightController;
 
         private void Awake()
         {
             instance = this;
-        }
 
-        private void Start()
-        {
-            UpdatePlayerState(PlayerState.Idle);
-
-            EnablePunchColliders();
+            fightController = GetComponent<FightController>();
         }
 
         private void Update()
@@ -116,30 +106,6 @@ namespace Assets.Scripts.Character
 
         public void Fight()
         {
-            UpdatePlayerState(PlayerState.FightIdle);
-        }
-
-        public void Punch()
-        {
-            if (_isRecovery) return;
-
-            _isRecovery = true;
-
-            UpdatePlayerState(PlayerState.Punching);
-        }
-
-        public void EnablePunchColliders()
-        {
-            foreach (var item in punchColliders)
-            {
-                item.enabled = true;
-            }
-        }
-
-        public void ResetRecovery()
-        {
-            _isRecovery = false;
-
             UpdatePlayerState(PlayerState.FightIdle);
         }
 

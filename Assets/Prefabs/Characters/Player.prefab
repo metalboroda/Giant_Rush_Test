@@ -73,8 +73,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7138899031119296005}
-  - component: {fileID: 8805188044516587136}
-  - component: {fileID: 5455826800013598918}
+  - component: {fileID: 8076329121653398393}
+  - component: {fileID: 2445285615749224529}
   m_Layer: 0
   m_Name: mixamorig:LeftHand
   m_TagString: Untagged
@@ -98,8 +98,24 @@ Transform:
   m_Father: {fileID: 6915649298184953151}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &8805188044516587136
-CapsuleCollider:
+--- !u!54 &8076329121653398393
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526731190190139914}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &2445285615749224529
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,24 +123,10 @@ CapsuleCollider:
   m_GameObject: {fileID: 526731190190139914}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
-  m_Radius: 0.1
-  m_Height: 0.4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &5455826800013598918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526731190190139914}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0e8970149b45f54098ccd4670c01eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterType: 0
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!1 &794817029550166479
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,8 +658,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2349681386479655950}
-  - component: {fileID: 7045223040941362646}
-  - component: {fileID: 5913240322660294634}
+  - component: {fileID: 991849940837402650}
+  - component: {fileID: 2178037765270656440}
   m_Layer: 0
   m_Name: mixamorig:RightHand
   m_TagString: Untagged
@@ -681,8 +683,24 @@ Transform:
   m_Father: {fileID: 1926780768998921838}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &7045223040941362646
-CapsuleCollider:
+--- !u!54 &991849940837402650
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054120053139984071}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &2178037765270656440
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -690,24 +708,10 @@ CapsuleCollider:
   m_GameObject: {fileID: 2054120053139984071}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
-  m_Radius: 0.1
-  m_Height: 0.4
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.1, z: 0}
---- !u!114 &5913240322660294634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2054120053139984071}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0e8970149b45f54098ccd4670c01eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterType: 0
+  serializedVersion: 2
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!1 &2213232592570180043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1018,7 @@ GameObject:
   - component: {fileID: 5122969177454880702}
   - component: {fileID: 1303573043}
   - component: {fileID: 882281272068114956}
+  - component: {fileID: 8827971440795760011}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1107,9 +1112,6 @@ MonoBehaviour:
   model: {fileID: 4513921235593266221}
   rotationLimit: 0.2
   rotationSpeed: 0.3
-  punchColliders:
-  - {fileID: 8805188044516587136}
-  - {fileID: 7045223040941362646}
 --- !u!114 &1303573043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1159,6 +1161,22 @@ MonoBehaviour:
   powerLimit: 30
   scaleAmount: 0.075
   scaleTime: 0.25
+--- !u!114 &8827971440795760011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4120250566988111124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2182f405ad4b5b448ac51417bf9a994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fighterType: 0
+  punchColl:
+  - {fileID: 2445285615749224529}
+  - {fileID: 2178037765270656440}
 --- !u!1 &4265243598775460224
 GameObject:
   m_ObjectHideFlags: 0

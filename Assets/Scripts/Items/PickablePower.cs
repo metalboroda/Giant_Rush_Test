@@ -9,12 +9,12 @@ namespace Assets.Scripts.Items
         public bool needRandomColor = false;
 
         // Private refs
-        private PlayerController _playerController;
+        private PlayerColorController _playerController;
         private ScoreManager _scoreManager;
 
         private void Start()
         {
-            _playerController = PlayerController.instance;
+            _playerController = PlayerColorController.instance;
             _scoreManager = ScoreManager.instance;
 
             if (needRandomColor)

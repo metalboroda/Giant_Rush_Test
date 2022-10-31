@@ -16,7 +16,7 @@ namespace Assets.Scripts.Character
         {
             if (other.CompareTag("Player"))
             {
-                _bossController.UpdateBossState(BossState.Fighting);
+                _bossController.UpdateBossState(BossState.FightIdle);
             }
         }
     }

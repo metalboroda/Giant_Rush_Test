@@ -1,13 +1,10 @@
 using Assets.Scripts.Managers;
 using System;
-using System.Collections.Generic;
-using UniRx;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Character
 {
-    public class BossController : MonoBehaviour, IDamageable
+    public class BossController : MonoBehaviour
     {
         public static BossController instance;
 
@@ -21,13 +18,6 @@ namespace Assets.Scripts.Character
         [Header("")]
         public int powerCount;
 
-        [Header("Fight")]
-        [SerializeField]
-        private List<Collider> punchColliders = new List<Collider>();
-
-        // Private vars
-        //private bool _isRecovery = false;
-
         private void Awake()
         {
             instance = this;
@@ -36,8 +26,6 @@ namespace Assets.Scripts.Character
         private void Start()
         {
             UpdateBossState(BossState.Idle);
-
-            EnablePunchColliders();
         }
 
         public void UpdateBossState(BossState newState)
@@ -48,7 +36,9 @@ namespace Assets.Scripts.Character
             {
                 case BossState.Idle:
                     break;
-                case BossState.Fighting:
+                case BossState.FightIdle:
+                    break;
+                case BossState.Punching:
                     break;
                 case BossState.Dead:
                     break;
@@ -57,14 +47,6 @@ namespace Assets.Scripts.Character
             }
 
             OnBossStateChanged?.Invoke(newState);
-        }
-
-        public void EnablePunchColliders()
-        {
-            foreach (var item in punchColliders)
-            {
-                item.enabled = true;
-            }
         }
 
         private void GetHit(int damageAmount)
@@ -94,7 +76,8 @@ namespace Assets.Scripts.Character
     public enum BossState
     {
         Idle,
-        Fighting,
+        FightIdle,
+        Punching,
         Dead
     }
 }
