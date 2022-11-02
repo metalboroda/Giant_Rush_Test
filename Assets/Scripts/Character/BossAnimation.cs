@@ -69,7 +69,7 @@ public class BossAnimation : MonoBehaviour
 
     private void PunchAnimation(BossState state)
     {
-        if (state == BossState.FightIdle)
+        if (state == BossState.Punching)
         {
             var randAnim = Random.Range(0, 3 + 1);
 

@@ -21,7 +21,7 @@ namespace Assets.Scripts.Level
         {
             if (other.CompareTag("Player"))
             {
-                var playerController = other.GetComponent<PlayerColorController>();
+                var playerController = other.GetComponent<PlayerController>();
 
                 playerController.SetColor((int)colorState);
             }

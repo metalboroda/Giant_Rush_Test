@@ -48,6 +48,8 @@ namespace Assets.Scripts.Level
             GameManager.instance.UpdateGameState(GameState.Fighting);
             _playerMovement.Fight();
             _playerMovement.UpdatePlayerState(PlayerState.FightIdle);
+
+            StartCoroutine(FightController.Instance.CanFightSwitchRoutine());
         }
     }
 }

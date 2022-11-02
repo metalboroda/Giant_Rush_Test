@@ -13,7 +13,7 @@ namespace Assets.Scripts.Managers
         private TextMeshProUGUI powerScoreCountText;
 
         // Private refs
-        private PlayerColorController _playerController;
+        private PlayerController _playerController;
 
         private void Awake()
         {
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Managers
 
         private void Start()
         {
-            _playerController = PlayerColorController.instance;
+            _playerController = PlayerController.instance;
         }
 
         public void InCreasePowerScore()

@@ -1,13 +1,19 @@
 using Assets.Scripts.Character;
 using Assets.Scripts.Utils;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class FightController : MonoBehaviour
 {
+    public static FightController Instance;
+
     [Header("Fighter")]
     public FighterType fighterType;
+
+    [Header("")]
+    public int punchPower = 3;
+    public bool canFight = false;
 
     [Header("")]
     [SerializeField]
@@ -16,16 +22,14 @@ public class FightController : MonoBehaviour
     // Private vars
     private bool _isRecovery = false;
 
-    // Private comp
-    private Animator _animator;
-
     // Private refs
-    private HashAnimationNames _hashAnimationNames = new HashAnimationNames();
     private PlayerMovement _playerMovement;
     private BossController _bossController;
 
     private void Awake()
     {
+        Instance = this;
+
         Initialize();
     }
 
@@ -62,47 +66,35 @@ public class FightController : MonoBehaviour
 
     public void Punch()
     {
-        if (_isRecovery) return;
+        if (_isRecovery && !canFight) return;
 
         if (_playerMovement != null)
         {
             _isRecovery = true;
 
             _playerMovement.UpdatePlayerState(PlayerState.Punching);
-
-            PunchAnim();
         }
-        else if (_bossController != null)
+
+    }
+
+    public void PunchBoss()
+    {
+        if (_isRecovery) return;
+        if (!canFight) return;
+
+        if (_bossController != null)
         {
             _isRecovery = true;
 
             _bossController.UpdateBossState(BossState.Punching);
-
-            PunchAnim();
         }
     }
 
-    private void PunchAnim()
+    public IEnumerator CanFightSwitchRoutine()
     {
-        var randPunch = Random.Range(0, 4 + 1);
+        yield return new WaitForSeconds(2f);
 
-        switch (randPunch)
-        {
-            case 0:
-                _animator.CrossFade(_hashAnimationNames.PunchHash, 0.15f);
-                break;
-            case 1:
-                _animator.CrossFade(_hashAnimationNames.PunchHash2, 0.15f);
-                break;
-            case 2:
-                _animator.CrossFade(_hashAnimationNames.PunchHash3, 0.15f);
-                break;
-            case 3:
-                _animator.CrossFade(_hashAnimationNames.PunchHash4, 0.15f);
-                break;
-            default:
-                break;
-        }
+        canFight = true;
     }
 
     public void ResetRecovery()

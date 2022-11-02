@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Character
 {
-    public class BossController : MonoBehaviour
+    public class BossController : MonoBehaviour, IDamageable
     {
         public static BossController instance;
 
@@ -18,14 +18,31 @@ namespace Assets.Scripts.Character
         [Header("")]
         public int powerCount;
 
+        [Header("Attack Params")]
+        [SerializeField]
+        private float punchInterval = 1f;
+
+        // Private vars
+        private float _punchTimer;
+
+        // Private refs
+        private FightController _fightController;
+
         private void Awake()
         {
             instance = this;
+
+            _fightController = GetComponent<FightController>();
         }
 
         private void Start()
         {
             UpdateBossState(BossState.Idle);
+        }
+
+        private void Update()
+        {
+            Attack();
         }
 
         public void UpdateBossState(BossState newState)
@@ -47,6 +64,20 @@ namespace Assets.Scripts.Character
             }
 
             OnBossStateChanged?.Invoke(newState);
+        }
+
+        private void Attack()
+        {
+            if (_fightController == null) return;
+
+            _punchTimer += Time.deltaTime * 1;
+
+            if (_punchTimer >= punchInterval)
+            {
+                _fightController.PunchBoss();
+
+                _punchTimer = 0f;
+            }
         }
 
         private void GetHit(int damageAmount)

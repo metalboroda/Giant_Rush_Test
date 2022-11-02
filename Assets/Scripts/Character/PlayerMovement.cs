@@ -16,7 +16,7 @@ namespace Assets.Scripts.Character
         [Header("")]
         public PlayerState state;
 
-        [Header("")]
+        [Header("Movement")]
         public float movementSpeed = 5;
         public float speedUp = 0.25f;
         [SerializeField]
